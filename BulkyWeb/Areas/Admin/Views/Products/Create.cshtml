@@ -1,0 +1,93 @@
+﻿@using Bulky.Models
+@model Product
+
+<div class="card shadow bordeer-0">
+    <div class="card-header bg-secondary bg-gradient m-lg-0 py-2">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Crear Producto</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card-body p-4">
+    <form method="post" class="row">
+        <div class="border p-3">
+
+            <div asp-validation-summary="All"></div>
+
+            <div class="form-floating py-2 col-12">
+                <input asp-for="Category" class="form-control border-0 shadow" />
+                <label asp-for="Category" class="ms-2"></label>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating py-2 col-12">
+                <input asp-for="SubCategory" class="form-control border-0 shadow" />
+                <label asp-for="SubCategory" class="ms-2"></label>
+                <span asp-validation-for="SubCategory" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating py-2 col-12">
+                <input asp-for="SubCategory" class="form-control border-0 shadow" />
+                <label asp-for="SubCategory" class="ms-2"></label>
+                <span asp-validation-for="SubCategory" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating py-2 col-12">
+                <input asp-for="Name" class="form-control border-0 shadow" />
+                <label asp-for="Name" class="ms-2"></label>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating py-2 col-12">
+                <input asp-for="UnitCost" class="form-control border-0 shadow" />
+                <label asp-for="UnitCost" class="ms-2"></label>
+                <span asp-validation-for="UnitCost" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating py-2 col-12">
+                <input asp-for="UnitPrice" class="form-control border-0 shadow" />
+                <label asp-for="UnitPrice" class="ms-2"></label>
+                <span asp-validation-for="UnitPrice" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating py-2 col-12">
+                <input asp-for="CurrentStock" class="form-control border-0 shadow" />
+                <label asp-for="CurrentStock" class="ms-2"></label>
+                <span asp-validation-for="CurrentStock" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating py-2 col-12">
+                <input asp-for="ReorderLevel" class="form-control border-0 shadow" />
+                <label asp-for="ReorderLevel" class="ms-2"></label>
+                <span asp-validation-for="ReorderLevel" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating py-2 col-12">
+                <input asp-for="Status" class="form-control border-0 shadow" />
+                <label asp-for="Status" class="ms-2"></label>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+            <div class="row pt-2">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-primary form-control">
+                        <i class="bi bi-plus-circle"></i> Crear
+                    </button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Products" asp-action="Index" class="btn btn-outline-primary border form-control">
+                        <i class="bi bi-backspace"></i> Regresar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

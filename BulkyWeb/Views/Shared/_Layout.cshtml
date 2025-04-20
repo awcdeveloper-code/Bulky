@@ -29,19 +29,46 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Categories" asp-action="Index">Categorías</a>
+                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacidad</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Products" asp-action="Index">Productos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Index">Usuarios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Configuración</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Categories" asp-action="Index">
+                                        <i class="bi bi-card-list"></i> Categorías</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Products" asp-action="Index">
+                                        <i class="bi bi-card-list"></i> Productos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Users" asp-action="Index">
+                                        <i class="bi bi-person"></i> Usuarios</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-people-fill"></i> Clientes Frecuentes</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#">
+                                        <i class="bi bi-piggy-bank-fill"></i> Promociones</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">
+                                        <i class="bi bi-bucket"></i> Baldes</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#">
+                                        <i class="bi bi-diagram-3-fill"></i> Relaciones Licores</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#">
+                                        <i class="bi bi-diagram-3-fill"></i> Relaciones Comidas</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

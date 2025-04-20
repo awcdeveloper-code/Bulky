@@ -1,20 +1,20 @@
 ﻿@using Bulky.Models
-@model List<Category>
+@model List<Product>
 
 <div class="card shadow bordeer-0">
     <div class="card-header bg-secondary bg-gradient m-lg-0 py-2">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-white py-2">Lista de Categorías</h2>
+                <h2 class="text-white py-2">Lista de Productos</h2>
             </div>
         </div>
     </div>
 </div>
 <div class="card-body p-4">
-    <div class="row pt-4 pb-3>">
+    <div class="row pt-2 pb-2 mb-2">
         <div class="col-12 text-end">
             <a asp-controller="Categories" asp-action="Create" class="btn btn-primary">
-                <i class="bi bi-plus-circle"></i> Crear Categoría
+                <i class="bi bi-plus-circle"></i> Crear Producto
             </a>
         </div>
     </div>
@@ -22,26 +22,41 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Producto</th>
+                <th>Subproducto</th>
                 <th>Nombre</th>
-                <th>Orden Visual</th>
+                <th>Costo</th>
+                <th>Precio</th>
+                <th>Disponibles</th>
+                <th>Mínimo</th>
+                <th>Estado</th>
                 <th>Acciones Disponibles</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var obj in Model.OrderBy(x => x.DisplayOrder))
+            @foreach (var obj in Model.OrderBy(x => x.Name))
             {
                 <tr>
+
                     <td>@obj.Id</td>
+                    <td>@obj.Category</td>
+                    <td>@obj.SubCategory</td>
                     <td>@obj.Name</td>
-                    <td>@obj.DisplayOrder</td>
+                    <td>@obj.UnitCost</td>
+                    <td>@obj.UnitPrice</td>
+                    <td>@obj.CurrentStock</td>
+                    <td>@obj.ReorderLevel</td>
+                    <td>@obj.Status</td>
+
                     <td>
-                        <a asp-controller="Categories" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+                        <a asp-controller="Products" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
                             <i class="bi bi-pencil-square"></i> Editar
                         </a>
-                        <a asp-controller="Categories" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+                        <a asp-controller="Products" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
                             <i class="bi bi-trash"></i> Borrar
                         </a>
                     </td>
+
                 </tr>
             }
         </tbody>
