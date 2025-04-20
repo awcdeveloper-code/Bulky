@@ -22,7 +22,7 @@ namespace Bulky.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BulkyWeb.Models.Category", b =>
+            modelBuilder.Entity("Bulky.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -87,7 +87,93 @@ namespace Bulky.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("BulkyWeb.Models.Product", b =>
+            modelBuilder.Entity("Bulky.Models.Customer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("LastUpdate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2025, 4, 20, 11, 46, 1, 218, DateTimeKind.Local).AddTicks(9636),
+                            LastUpdate = new DateTime(2025, 4, 20, 11, 46, 1, 218, DateTimeKind.Local).AddTicks(9933),
+                            Name = "Memo Grillo",
+                            Status = 1,
+                            Type = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2025, 4, 20, 11, 46, 1, 219, DateTimeKind.Local).AddTicks(210),
+                            LastUpdate = new DateTime(2025, 4, 20, 11, 46, 1, 219, DateTimeKind.Local).AddTicks(212),
+                            Name = "MESA-01",
+                            Status = 1,
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2025, 4, 20, 11, 46, 1, 219, DateTimeKind.Local).AddTicks(214),
+                            LastUpdate = new DateTime(2025, 4, 20, 11, 46, 1, 219, DateTimeKind.Local).AddTicks(215),
+                            Name = "MESA-02",
+                            Status = 0,
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedAt = new DateTime(2025, 4, 20, 11, 46, 1, 219, DateTimeKind.Local).AddTicks(216),
+                            LastUpdate = new DateTime(2025, 4, 20, 11, 46, 1, 219, DateTimeKind.Local).AddTicks(217),
+                            Name = "MESA-03",
+                            Status = 0,
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedAt = new DateTime(2025, 4, 20, 11, 46, 1, 219, DateTimeKind.Local).AddTicks(218),
+                            LastUpdate = new DateTime(2025, 4, 20, 11, 46, 1, 219, DateTimeKind.Local).AddTicks(219),
+                            Name = "MESA-04",
+                            Status = 0,
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedAt = new DateTime(2025, 4, 20, 11, 46, 1, 219, DateTimeKind.Local).AddTicks(220),
+                            LastUpdate = new DateTime(2025, 4, 20, 11, 46, 1, 219, DateTimeKind.Local).AddTicks(221),
+                            Name = "MESA-05",
+                            Status = 0,
+                            Type = 2
+                        });
+                });
+
+            modelBuilder.Entity("Bulky.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -115,10 +201,12 @@ namespace Bulky.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("UnitCost")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(18, 4)
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<decimal>("UnitPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(18, 4)
+                        .HasColumnType("decimal(18,4)");
 
                     b.HasKey("Id");
 
@@ -199,7 +287,7 @@ namespace Bulky.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("BulkyWeb.Models.User", b =>
+            modelBuilder.Entity("Bulky.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -215,7 +303,8 @@ namespace Bulky.DataAccess.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<int>("PIN")
                         .HasColumnType("int");
@@ -231,8 +320,8 @@ namespace Bulky.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 4, 17, 18, 43, 46, 464, DateTimeKind.Local).AddTicks(4873),
-                            LastLogin = new DateTime(2025, 4, 17, 18, 43, 46, 466, DateTimeKind.Local).AddTicks(2766),
+                            CreatedAt = new DateTime(2025, 4, 20, 11, 46, 1, 216, DateTimeKind.Local).AddTicks(9329),
+                            LastLogin = new DateTime(2025, 4, 20, 11, 46, 1, 218, DateTimeKind.Local).AddTicks(7101),
                             Name = "Admin",
                             PIN = 1234,
                             Status = 1
@@ -240,8 +329,8 @@ namespace Bulky.DataAccess.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 4, 17, 18, 43, 46, 466, DateTimeKind.Local).AddTicks(3249),
-                            LastLogin = new DateTime(2025, 4, 17, 18, 43, 46, 466, DateTimeKind.Local).AddTicks(3252),
+                            CreatedAt = new DateTime(2025, 4, 20, 11, 46, 1, 218, DateTimeKind.Local).AddTicks(7513),
+                            LastLogin = new DateTime(2025, 4, 20, 11, 46, 1, 218, DateTimeKind.Local).AddTicks(7516),
                             Name = "User",
                             PIN = 5678,
                             Status = 1

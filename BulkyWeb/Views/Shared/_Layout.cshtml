@@ -29,10 +29,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Inicio</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacidad</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Configuración</a>
@@ -49,11 +49,13 @@
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="Users" asp-action="Index">
                                         <i class="bi bi-person"></i> Usuarios</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Customers" asp-action="Index">
+                                        <i class="bi bi-people"></i> Clientes
+                                    </a>
+                                </li>
                                 <li>
                                     <a class="dropdown-item" href="#">
-                                        <i class="bi bi-people-fill"></i> Clientes Frecuentes</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#">
                                         <i class="bi bi-piggy-bank-fill"></i> Promociones</a>
                                 </li>
                                 <li>

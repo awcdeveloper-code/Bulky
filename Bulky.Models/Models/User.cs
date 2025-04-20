@@ -14,9 +14,12 @@ namespace Bulky.Models
 
         [Required]
         [DisplayName("Nombre")]
+        [StringLength(20, ErrorMessage = "El nombre no puede exceder los 20 caracteres.")]
         public string? Name { get; set; }
 
+        [Required]
         [DisplayName("Estado")]
+        [Range(0, 1, ErrorMessage = "El estado debe estar entre 0 y 5.")]
         public int Status { get; set; }
 
         [DisplayName("Creado")]

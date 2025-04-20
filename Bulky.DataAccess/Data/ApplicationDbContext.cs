@@ -13,6 +13,7 @@ namespace Bulky.DataAccess.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -170,6 +171,63 @@ namespace Bulky.DataAccess.Data
                     Status = 1,
                     CreatedAt = DateTime.Now,
                     LastLogin = DateTime.Now
+                }
+            );
+
+            modelBuilder.Entity<Customer>().HasData(
+                new Customer
+                {
+                    Id = 1,
+                    Type = 1,
+                    Name = "Memo Grillo",
+                    Status = 1,
+                    CreatedAt = DateTime.Now,
+                    LastUpdate = DateTime.Now
+                },
+                new Customer
+                {
+                    Id = 2,
+                    Type = 2,
+                    Name = "MESA-01",
+                    Status = 1,
+                    CreatedAt = DateTime.Now,
+                    LastUpdate = DateTime.Now
+                },
+                new Customer
+                {
+                    Id = 3,
+                    Type = 2,
+                    Name = "MESA-02",
+                    Status = 0,
+                    CreatedAt = DateTime.Now,
+                    LastUpdate = DateTime.Now
+                },
+                new Customer
+                {
+                    Id = 4,
+                    Type = 2,
+                    Name = "MESA-03",
+                    Status = 0,
+                    CreatedAt = DateTime.Now,
+                    LastUpdate = DateTime.Now
+                },
+                new Customer
+                {
+                    Id = 5,
+                    Type = 2,
+                    Name = "MESA-04",
+                    Status = 0,
+                    CreatedAt = DateTime.Now,
+                    LastUpdate = DateTime.Now
+                },
+                new Customer
+                {
+                    Id = 6,
+                    Type = 2,
+                    Name = "MESA-05",
+                    Status = 0,
+                    CreatedAt = DateTime.Now,
+                    LastUpdate = DateTime.Now
                 }
             );
         }

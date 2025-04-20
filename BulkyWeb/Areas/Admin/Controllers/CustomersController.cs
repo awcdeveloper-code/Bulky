@@ -1,18 +1,16 @@
-﻿using Bulky.DataAccess.Data;
-using Bulky.DataAccess.Repository.IRepository;
+﻿using Bulky.DataAccess.Repository.IRepository;
 using Bulky.Models;
-using BulkyWeb.Areas.Customer.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BulkyWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class UsersController : Controller
+    public class CustomersController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly ILogger<UsersController> _logger;
+        private readonly ILogger<CustomersController> _logger;
         private string _message = string.Empty;
-        public UsersController(IUnitOfWork unitOfWork, ILogger<UsersController> logger)
+        public CustomersController(IUnitOfWork unitOfWork, ILogger<CustomersController> logger)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
@@ -20,8 +18,8 @@ namespace BulkyWeb.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            List<User> objUsers = _unitOfWork.User.GetAll().ToList();
-            return View(objUsers);
+            List<Bulky.Models.Customer> objCustomers = _unitOfWork.Customer.GetAll().ToList();
+            return View(objCustomers);
         }
 
         public IActionResult Create()
@@ -30,17 +28,17 @@ namespace BulkyWeb.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(User obj)
+        public IActionResult Create(Bulky.Models.Customer obj)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.User.Add(obj);
+                _unitOfWork.Customer.Add(obj);
                 _unitOfWork.Save();
 
-                _message = $"Usuarop {obj.Name} creado correctamente.";
+                _message = $"Cliente {obj.Name} creado correctamente.";
                 TempData["success"] = _message;
                 _logger.LogInformation(_message);
-
+                
                 return RedirectToAction("Index");
             }
             return View();
@@ -53,25 +51,25 @@ namespace BulkyWeb.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            User? userFromDb = _unitOfWork.User.Get(x => x.Id == id);
+            Bulky.Models.Customer? customerFromDb = _unitOfWork.Customer.Get(x => x.Id == id);
 
-            if (userFromDb == null)
+            if (customerFromDb == null)
             {
                 return NotFound();
             }
 
-            return View(userFromDb);
+            return View(customerFromDb);
         }
 
         [HttpPost]
-        public IActionResult Edit(User obj)
+        public IActionResult Edit(Bulky.Models.Customer obj)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.User.Update(obj);
+                _unitOfWork.Customer.Update(obj);
                 _unitOfWork.Save();
 
-                _message = $"Usuario {obj.Name} actualizado correctamente.";
+                _message = $"Cliente {obj.Name} actualizado correctamente.";
                 TempData["success"] = _message;
                 _logger.LogInformation(_message);
 
@@ -87,30 +85,30 @@ namespace BulkyWeb.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            User? userFromDb = _unitOfWork.User.Get(x => x.Id == id);
+            Bulky.Models.Customer? customerFromDb = _unitOfWork.Customer.Get(x => x.Id == id);
 
-            if (userFromDb == null)
+            if (customerFromDb == null)
             {
                 return NotFound();
             }
 
-            return View(userFromDb);
+            return View(customerFromDb);
         }
 
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePost(int? id)
         {
-            User obj = _unitOfWork.User.Get(x => x.Id == id);
+            Bulky.Models.Customer obj = _unitOfWork.Customer.Get(x => x.Id == id);
 
             if (obj == null)
             {
                 return NotFound();
             }
 
-            _unitOfWork.User.Remove(obj);
+            _unitOfWork.Customer.Remove(obj);
             _unitOfWork.Save();
 
-            _message = $"Usuario {obj.Name} eliminado correctamente.";
+            _message = $"Cliente {obj.Name} eliminado correctamente.";
             TempData["success"] = _message;
             _logger.LogInformation(_message);
 
