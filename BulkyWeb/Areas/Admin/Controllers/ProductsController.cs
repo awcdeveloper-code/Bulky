@@ -2,11 +2,13 @@
 using Bulky.DataAccess.Repository.IRepository;
 using Bulky.Models;
 using BulkyWeb.Areas.Customer.Controllers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BulkyWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Policy = "AdminOnly")]
     public class ProductsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

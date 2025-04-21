@@ -1,6 +1,7 @@
 ﻿using Bulky.DataAccess.Data;
 using Bulky.DataAccess.Repository;
 using Bulky.DataAccess.Repository.IRepository;
+using Bulky.Models.Models;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -13,6 +14,33 @@ Log.Logger = new LoggerConfiguration()
 
 // Replace default logger with Serilog
 builder.Host.UseSerilog();
+
+// define Bulky authentication scheme
+builder.Services.AddAuthentication("Bulky")
+    .AddScheme<BulkyAuthenticationOptions, BulkyAuthenticationHandler>("Bulky", options =>
+    {
+        //options.LoginPath = "/Account/Login";
+        //options.AccessDeniedPath = "/Home/AccessDenied";
+        //options.LogoutPath = "/Account/Logout";
+        //options.ReturnUrlParameter = "returnUrl";
+    });
+
+// define Bulky policy and authorization
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy =>
+    {
+        policy.RequireRole("Admin");
+        policy.RequireAuthenticatedUser();
+        policy.AuthenticationSchemes.Add("Bulky");
+    });
+});
+
+// define access denied page
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.AccessDeniedPath = "/Home/AccessDenied";
+});
 
 // add services to the container
 builder.Services.AddControllersWithViews();
